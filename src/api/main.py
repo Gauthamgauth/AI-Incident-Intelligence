@@ -25,16 +25,12 @@ sys.path.append(str(PROJECT_ROOT / "src" / "retrieval"))
 load_dotenv(PROJECT_ROOT / ".env")
 
 from generate_answer import generate_answer as generate_naive  # noqa: E402
-from generate_answer_advanced import generate_answer as generate_advanced  # noqa: E402
 from retriever import retrieve  # noqa: E402
-from hybrid_retriever import advanced_retrieve  # noqa: E402
 
 APP_API_KEY = os.getenv("APP_API_KEY")
 
 
-
-#Rate limiter setup 
-
+# Rate limiter setup
 
 limiter = Limiter(key_func=get_remote_address)
 
@@ -43,8 +39,7 @@ app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 
-##API key auth setup 
-
+# API key auth setup
 
 api_key_header = APIKeyHeader(name="X-API-Key", auto_error=False)
 
@@ -86,6 +81,9 @@ def ask(request: Request, body: AskRequest, api_key: str = Security(verify_api_k
             results = retrieve(body.query, body.n_results)
             answer = generate_naive(body.query, body.n_results)
         else:
+            # Lazy import — only loads the heavy reranker model if advanced is actually requested
+            from generate_answer_advanced import generate_answer as generate_advanced
+            from hybrid_retriever import advanced_retrieve
             results = advanced_retrieve(body.query, body.n_results)
             answer = generate_advanced(body.query, body.n_results)
 
