@@ -1,16 +1,15 @@
 
 fastapi
 uvicorn
-pandas
-numpy
+openai
 python-dotenv
 pydantic
-langchain
-langgraph
 langsmith
 chromadb
 sentence-transformers
-scikit-learn
+rank-bm25
 requests
 beautifulsoup4
 slowapi
+streamlit
+psycopg2-binary
