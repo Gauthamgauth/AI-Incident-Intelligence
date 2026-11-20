@@ -3,18 +3,19 @@ Streamlit dashboard: a simple chat-style UI for querying the Incident
 Intelligence RAG system via the FastAPI backend.
 """
 
-import os
-from pathlib import Path
-
 import requests
 import streamlit as st
-from dotenv import load_dotenv
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-load_dotenv(PROJECT_ROOT / ".env")
+API_URL = "https://ai-incident-intelligence-fw8d.onrender.com/ask"
 
-API_URL = "http://127.0.0.1:8000/ask"
-APP_API_KEY = os.getenv("APP_API_KEY")
+try:
+    APP_API_KEY = st.secrets["APP_API_KEY"]
+except Exception:
+    import os
+    from pathlib import Path
+    from dotenv import load_dotenv
+    load_dotenv(Path(__file__).resolve().parents[2] / ".env")
+    APP_API_KEY = os.getenv("APP_API_KEY")
 
 st.set_page_config(page_title="Incident Intelligence Assistant", page_icon="🔍", layout="centered")
 
