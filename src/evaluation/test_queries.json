@@ -1,0 +1,12 @@
+[
+  "what caused API outages recently",
+  "list incidents related to database connectivity issues",
+  "were there any authentication or login failures",
+  "what incidents affected GitHub Actions",
+  "describe any incidents involving Copilot",
+  "what caused the Cloudflare network degradation",
+  "were there issues with webhook deliveries",
+  "what incidents had major or critical impact",
+  "list incidents caused by upstream provider issues",
+  "what performance degradation incidents happened on OpenAI's API"
+]

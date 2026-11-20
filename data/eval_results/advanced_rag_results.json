@@ -1,0 +1,170 @@
+{
+  "pipeline": "advanced_rag",
+  "timestamp": "2026-11-19T11:30:12.572873+00:00",
+  "num_queries": 10,
+  "avg_retrieval_relevance": 5.0,
+  "avg_faithfulness": 5.0,
+  "avg_answer_relevance": 4.6,
+  "details": [
+    {
+      "query": "what caused API outages recently",
+      "answer": "Recent API outages were caused by the following incidents:\n\n1. A bug in the process for replacing control-plane servers in one of the compute clusters led to an incorrect server configuration, which stopped traffic from reaching much of the cluster's capacity and overloaded the authentication servers. This resulted in a minor impact on API requests and Copilot API errors [Source 1].\n\n2. A scheduled maintenance event involving the migration of tables between MySQL clusters caused elevated 404 errors for API and git requests authenticated with server-to-server tokens for GitHub Apps. This resulted in increased failure rates for these requests [Source 2].\n\n3. There were also reports of degraded performance for API requests, Actions, Issues, and Pull Requests, which resulted in slower response times and some requests timing out [Source 4]. \n\nThese incidents were resolved, and services have returned to normal operation.",
+      "retrieval_relevance": {
+        "score": 5,
+        "reason": "All retrieved contexts provide specific details about recent API outages and their causes."
+      },
+      "faithfulness": {
+        "score": 5,
+        "reason": "Every claim in the answer is directly supported by the context provided in the sources."
+      },
+      "answer_relevance": {
+        "score": 5,
+        "reason": "The answer provides a detailed explanation of the causes of recent API outages, addressing the query completely."
+      }
+    },
+    {
+      "query": "list incidents related to database connectivity issues",
+      "answer": "The incidents related to database connectivity issues are:\n\n1. **Incident with Pull Requests, Git Operations and Issues**  \n   - Details: The database connection layer overloaded, leading to a failover to a new primary database host. Mitigations included increasing processing capacity and adding alerting for overload detection.  \n   - Impact: Major  \n   - Status: Resolved  \n   - [Source 1]\n\n2. **Incident with Actions**  \n   - Details: A partial networking failure disrupted connectivity between an on-premises datacenter region and cloud-hosted regional database and storage services. Mitigation involved shifting traffic to healthy regions and increasing capacity for affected compute services.  \n   - Impact: Critical  \n   - Status: Resolved  \n   - [Source 2]\n\n3. **Disruption with some GitHub services**  \n   - Details: The incident involved shifting database traffic to a healthy region due to a network failure affecting cloud-hosted regional database services.  \n   - Impact: Major  \n   - Status: Resolved  \n   - [Source 3]\n\n4. **Incident with Actions**  \n   - Details: Large read requests caused memory pressure, leading to a stall and rejection of requests. Mitigation involved failing over the affected database host.  \n   - Impact: Minor  \n   - Status: Resolved  \n   - [Source 4]\n\n5. **Incident with Actions, Issues, API Requests and Pull Requests**  \n   - Details: Unusually large requests overwhelmed part of the database infrastructure, causing a backlog. The incident was mitigated by restarting the component.  \n   - Impact: Minor  \n   - Status: Resolved  \n   - [Source 5]",
+      "retrieval_relevance": {
+        "score": 5,
+        "reason": "All retrieved contexts directly relate to incidents involving database connectivity issues."
+      },
+      "faithfulness": {
+        "score": 5,
+        "reason": "Every claim in the answer is directly supported by the provided context."
+      },
+      "answer_relevance": {
+        "score": 5,
+        "reason": "The answer provides a comprehensive list of incidents specifically related to database connectivity issues, including details, impacts, and statuses."
+      }
+    },
+    {
+      "query": "were there any authentication or login failures",
+      "answer": "Yes, there were authentication failures reported in multiple incidents. \n\n1. In the first incident with Git operations, up to 26% of Git authentication requests failed during the outages [Source 1].\n2. In the third incident, some users experienced authentication failures and errors with the REST and GraphQL APIs, pull requests, and GitHub Copilot [Source 3].\n3. In the fourth incident, 11.3% of unauthenticated requests failed, indicating issues related to authentication for those users [Source 4].\n\nOverall, there were significant authentication failures across these incidents.",
+      "retrieval_relevance": {
+        "score": 5,
+        "reason": "All retrieved contexts directly address authentication and login failures."
+      },
+      "faithfulness": {
+        "score": 5,
+        "reason": "Every claim in the answer is backed by the context provided."
+      },
+      "answer_relevance": {
+        "score": 5,
+        "reason": "The answer directly and completely addresses the query by providing specific incidents and details about authentication failures."
+      }
+    },
+    {
+      "query": "what incidents affected GitHub Actions",
+      "answer": "The following incidents affected GitHub Actions:\n\n1. **Incident with Actions** (Source 1): Between 16:39 and 16:57 UTC on November 5, 2026, some customers experienced failures starting workflow runs in GitHub Actions due to resource exhaustion in a database service. At peak, about 3% of workflow runs failed to queue.\n\n2. **Incident with Actions** (Source 2): There were delays in processing GitHub Actions workflow and step results, along with some repository updates. The delays were expected to clear as processing capacity was scaled.\n\n3. **Incident with Git Operations, Issues, Actions and Pull Requests** (Source 3): From 16:52 to 17:01 UTC on October 7, 2026, there was widespread impact across GitHub services, including Actions, due to a recurrence of a previous incident.\n\n4. **[Retroactive] Actions workflow run failures after deployment gate approvals** (Source 4): On October 1, around 02:00 UTC, an isolated infrastructure failure caused GitHub Actions to lose execution state for a small number of existing workflow runs.\n\n5. **[Retroactive] Actions workflow run logs delayed** (Source 5): On October 13, around 20:42 UTC, an infrastructure failure caused delays in showing logs for workflow runs, although the actual workflows ran normally.\n\nThese incidents were resolved and had minor to critical impacts.",
+      "retrieval_relevance": {
+        "score": 5,
+        "reason": "All retrieved contexts directly address incidents that affected GitHub Actions."
+      },
+      "faithfulness": {
+        "score": 5,
+        "reason": "Every claim in the answer is directly supported by the context provided."
+      },
+      "answer_relevance": {
+        "score": 5,
+        "reason": "The answer provides a comprehensive list of incidents that affected GitHub Actions, detailing specific dates, impacts, and resolutions."
+      }
+    },
+    {
+      "query": "describe any incidents involving Copilot",
+      "answer": "There have been several incidents involving Copilot:\n\n1. **Incident with API, Git, and Copilot requests** (Minor, Resolved)\n   - Date: November 3, 2026\n   - Details: Users experienced authentication failures and errors with the REST and GraphQL APIs, pull requests, Issues, and GitHub Copilot. The error rate peaked at 3.1% for Copilot API errors. The degradation affecting Copilot has been mitigated, and stability is being monitored.\n   - [Source 1](https://stspg.io/h1xqhrcn5gqn)\n\n2. **Disruption with some Copilot services** (Critical, Resolved)\n   - Date: October 28, 2026\n   - Details: Copilot users saw errors when using several GPT-family models and the MAI Code 1.1 Flash model. The degradation affecting Copilot has been mitigated, and recovery is being monitored.\n   - [Source 2](https://stspg.io/bwcyq078jzms)\n\n3. **Increased task-related errors for Copilot Mission Control** (Minor, Resolved)\n   - Date: November 4, 2026\n   - Details: Increased error rates (approx 2.5%) in listing and creating tasks due to upstream database throttling. The degradation has been mitigated, and recovery is being monitored.\n   - [Source 3](https://stspg.io/hj74883wgn0t)\n\n4. **Disruption with Copilot Cloud services** (Minor, Resolved)\n   - Date: Not specified\n   - Details: Increased failures and latency on agent sessions service, impacting cloud-based agent sessions on various platforms. The failure rates were between 1-2%. The situation is being monitored for stability.\n   - [Source 4](https://stspg.io/22p3vp78z20q)\n\n5. **Degraded availability for GPT-5.3 Codex and GPT-5.6 models in Copilot** (Major, Resolved)\n   - Date: Not specified\n   - Details: Degraded availability for specific Copilot models due to an issue with an upstream model provider. The degradation has been mitigated, and stability is being monitored.\n   - [Source 5](https://stspg.io/t5gqmprtrdf2)",
+      "retrieval_relevance": {
+        "score": 5,
+        "reason": "All retrieved contexts directly describe incidents involving Copilot."
+      },
+      "faithfulness": {
+        "score": 5,
+        "reason": "Every claim in the answer is backed by the context provided."
+      },
+      "answer_relevance": {
+        "score": 5,
+        "reason": "The answer provides a comprehensive list of incidents involving Copilot, including dates, details, and resolutions."
+      }
+    },
+    {
+      "query": "what caused the Cloudflare network degradation",
+      "answer": "The Cloudflare network degradation was caused by a network connectivity issue between several Cloudflare data centers, which led to increased errors for R2 and Tiered Cache services, particularly affecting customers in Chicago, IL. This issue resulted in HTTP 500 errors for R2 customers and various errors (520, 522, or 524) for requests served through Tiered Cache. The error rates have since dropped close to normal levels after the issue was resolved[Source 1].",
+      "retrieval_relevance": {
+        "score": 5,
+        "reason": "All retrieved contexts directly relate to network performance issues and disruptions caused by Cloudflare, including specific incidents that contributed to network degradation."
+      },
+      "faithfulness": {
+        "score": 5,
+        "reason": "Every claim in the answer is directly supported by the details provided in Source 1."
+      },
+      "answer_relevance": {
+        "score": 5,
+        "reason": "The answer directly and completely explains the cause of the Cloudflare network degradation."
+      }
+    },
+    {
+      "query": "were there issues with webhook deliveries",
+      "answer": "Yes, there were issues with webhook deliveries during several incidents. For example, on October 30, 2026, webhook deliveries were delayed due to degraded performance affecting Actions, Pages, and Webhooks [Source 2]. Additionally, on November 4, 2026, webhook deliveries dropped to about 58% of normal volume during an incident affecting Actions and Pages [Source 3]. Furthermore, there was an incident where an average of 26% of webhook deliveries were delayed, with some deliveries delayed by up to 3.5 hours [Source 5].",
+      "retrieval_relevance": {
+        "score": 5,
+        "reason": "All retrieved contexts directly address issues with webhook deliveries, detailing incidents of degraded performance and delays."
+      },
+      "faithfulness": {
+        "score": 5,
+        "reason": "Every claim in the answer is directly supported by the context provided."
+      },
+      "answer_relevance": {
+        "score": 5,
+        "reason": "The answer directly and completely addresses the query by providing specific examples of issues with webhook deliveries."
+      }
+    },
+    {
+      "query": "what incidents had major or critical impact",
+      "answer": "The incidents with major or critical impact are:\n\n1. **Incident with Actions and Checks API** - Impact: Critical. Some customers saw workflow runs fail to start, update, or report status correctly, with an average of 28% of workflow runs affected, peaking at 65% during the worst period. [Source 1]\n\n2. **Incident with Git Operations, Pull Requests and Actions** - Impact: Critical. There were two outages of write operations totaling about 19 minutes, affecting actions that save or change data across multiple services, with up to 19% of Actions workflow runs failing. [Source 3]",
+      "retrieval_relevance": {
+        "score": 5,
+        "reason": "All retrieved chunks describe incidents with major or critical impacts on services."
+      },
+      "faithfulness": {
+        "score": 5,
+        "reason": "Every claim in the answer is backed by the context provided."
+      },
+      "answer_relevance": {
+        "score": 5,
+        "reason": "The answer directly lists incidents with major or critical impact and provides specific details about each incident."
+      }
+    },
+    {
+      "query": "list incidents caused by upstream provider issues",
+      "answer": "The following incidents were caused by upstream provider issues:\n\n1. **Disruption with Email Delivery** - Users whose email is hosted by the affected provider experienced delays in message delivery due to an upstream provider degradation. [Source 1]\n\n2. **Grok 4.6 and Grok 4.7 Service Issues** - The degradation was caused by an issue with an upstream model provider affecting the performance of certain models. [Source 2]\n\n3. **Elevated errors affecting the Microsoft 365 connector** - An issue with an upstream provider affected the Microsoft 365 connector, causing failures in mail, calendar, and search tools. [Source 3]\n\n4. **Disruption with some Copilot services** - Issues with upstream model providers resulted in degraded performance across several Copilot services. [Source 4]\n\n5. **Copilot experiencing degraded model availability for some GPT models** - Degraded availability for certain GPT models was due to an issue with an upstream model provider. [Source 5]",
+      "retrieval_relevance": {
+        "score": 5,
+        "reason": "All retrieved contexts detail incidents caused by upstream provider issues."
+      },
+      "faithfulness": {
+        "score": 5,
+        "reason": "Every claim in the answer is directly supported by the context provided in the sources."
+      },
+      "answer_relevance": {
+        "score": 5,
+        "reason": "The answer directly lists multiple incidents caused by upstream provider issues, providing specific examples and context."
+      }
+    },
+    {
+      "query": "what performance degradation incidents happened on OpenAI's API",
+      "answer": "The context provided does not contain any information regarding performance degradation incidents specifically related to OpenAI's API. Therefore, I cannot answer your question.",
+      "retrieval_relevance": {
+        "score": 5,
+        "reason": "All retrieved contexts detail performance degradation incidents related to OpenAI's API."
+      },
+      "faithfulness": {
+        "score": 5,
+        "reason": "The answer accurately reflects that there is no information regarding OpenAI's API in the provided context."
+      },
+      "answer_relevance": {
+        "score": 1,
+        "reason": "The answer does not provide any relevant information about performance degradation incidents on OpenAI's API."
+      }
+    }
+  ]
+}
