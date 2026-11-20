@@ -40,7 +40,7 @@ if st.button("Ask", type="primary") and query.strip():
                 API_URL,
                 json={"query": query, "pipeline": pipeline, "n_results": n_results},
                 headers={"X-API-Key": APP_API_KEY},
-                timeout=60,
+                timeout=120,
             )
             response.raise_for_status()
             data = response.json()
